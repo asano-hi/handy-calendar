@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<div class="event-show">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>タイトル</strong>
+  <%= @schedule.event_title %>
+</p>
+
+<p>
+  <strong>時間</strong>
+  <%= @schedule.start_time.strftime("%Y-%m-%d %H:%M") %>
+  ~
+  <%= @schedule.end_time.strftime("%Y-%m-%d %H:%M")%>
+</p>
+
+<p>
+  <strong>仕事時間</strong>
+  <%= @schedule.workhours %>
+</p>
+
+<p>
+  <strong>内容</strong>
+  <%= @schedule.memo %>
+</p>
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', schedules_path %>
+</div>

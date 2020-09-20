@@ -1,0 +1,37 @@
+<div class="event-form">
+
+<%= form_with(model: @schedule, local: true) do |form| %>
+
+  <div class="title">
+    <%= form.label :event_title %>
+    <%= form.text_field :event_title %>
+  </div>
+
+    <div class="time">
+    <%= form.label :start_time %>
+    <%= form.datetime_select :start_time %>
+  </div>
+
+    <div class="time">
+    <%= form.label :end_time %>
+    <%= form.datetime_select :end_time %>
+  </div>
+
+  <div class="content">
+    <%= form.label :memo %>
+    <%= form.text_field :memo%>
+  </div>
+
+  <div class="workhour">
+    <%= form.label :workhours%>
+    <%= form.number_field :workhours %>
+  </div>
+
+  <div class="submit">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<%= link_to 'Back', schedules_path %>
+</div>

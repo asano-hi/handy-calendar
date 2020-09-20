@@ -1,0 +1,33 @@
+// Place all the styles related to the jobs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.month-search{
+  height: 100vh;
+  width: 100%;
+  background-color: #fff7c9;
+  text-align: center;
+  padding-top: 5%;
+}
+
+.payment-show{
+  height: 20vh;
+  width: 60%;
+  margin-left: 20%;
+
+}
+
+.chart-show{
+  width: 50%;
+  margin-left: 25%;
+}
+
+.payment-sum{
+  width: 20%;
+  background-color: #fff;
+  margin-left: 40%;
+}
+
+.payment-sum h5{
+  background-color: rgb(219, 217, 217);
+}
