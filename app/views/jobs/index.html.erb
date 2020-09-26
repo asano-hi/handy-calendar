@@ -1,6 +1,17 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 <div class="month-search">
+<br>
+  <br>
+  <p>※調べたい月を選択して下さい</p>
+  <%= form_tag({controller:"jobs",action:"index"}, method: :get) do %>
+  <%= date_field_tag :search_date %>
+  <%= submit_tag '検索する' %>
+  <% end %>
+  <br>
+  <br>
+<br>
+<%= page_entries_info @schedules %>
   <div class="payment-show">
   <table class="event-table">
   <thead>
@@ -13,7 +24,7 @@
   </thead>
 
   <tbody>
-    <% @schedules.each do |schedule| %>
+    <% @chart.each do |schedule| %>
       <tr>
         <td><%= schedule.event_title %></td>
         <td><%= schedule.workhours %></td>
@@ -22,22 +33,20 @@
     <% end %>
   </tbody>
   </table>
+  <div class="page-nunber"><%= paginate @schedules %></div>
   </div>
   <div class="payment-sum">
   <h5>給料合計</h5>
   <%= @monthPay*@pay.payment %>
   </div>
   <br>
-  <br>
-  <%= form_tag({controller:"jobs",action:"index"}, method: :get) do %>
-  <%= date_field_tag :search_date %>
-  <%= submit_tag '検索する' %>
-  <% end %>
-  <br>
-  <br>
   <div class="chart-show">
-  <%= column_chart @schedules.pluck(:start_time, :workhours) %>
+  <%= column_chart @chart.pluck(:start_time, :workhours) %>
   </div>
 <br>
-<%= link_to '戻る', schedules_path %>
+<%= button_to '戻る', schedules_path, method: :get %>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

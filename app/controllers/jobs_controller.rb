@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   require 'date'
 
   def index
-    @schedules = current_user.schedules.where.not(workhours: nil).order(start_time: "ASC")
+    @schedules = current_user.schedules.where.not(workhours: nil).order(start_time: "ASC").page(params[:page]).per(5)
     @pay = User.find(current_user.id)
 
     if params[:search_date] == nil
@@ -10,6 +10,14 @@ class JobsController < ApplicationController
     else
       @monthPay = current_user.schedules.where(start_time: params[:search_date].in_time_zone.all_month).sum(:workhours)
     end
+
+    if params[:search_date] == nil
+      @chart = current_user.schedules.where(start_time: 2019-9-10)
+    else
+      @chart = current_user.schedules.where.not(workhours: nil).where(start_time: params[:search_date].in_time_zone.all_month)
+    end
+
+
 
   end
 

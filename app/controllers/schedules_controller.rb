@@ -3,7 +3,7 @@ class SchedulesController < ApplicationController
   require 'date'
 
   def index
-    @schedules = current_user.schedules.all.order(start_time: "ASC")
+    @schedules = current_user.schedules.all.order(start_time: "DESC").page(params[:page]).per(5)
 
   end
 

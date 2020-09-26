@@ -8,7 +8,7 @@
 </head>
 <body>
 
- <div class="top-main">
+<div class="top-main">
     <div class="top-main-upper-side">
       <div class="top-main-header">
         <h1>memento</h1>
@@ -31,16 +31,19 @@
     </div>
     <div class="top-main-line"></div>
   </div>
-<div class="card-show">
+<div class="expression-wrapper">
+  <h5>大切な思い出を書き留めよう</h5>
+</div>
+<div id="card-show">
 <div class="card-deck">
-  <div class="card col-4" style="width:20rem;">
-  <img class="card-img-top" src="/assets/screenshot3.png" alt="Card image cap">
+  <div class="card col-5" style="width:20rem;">
+  <img class="card-img-top" src="/assets/screenshot5.png" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">給料情報が見やすい</h5>
     <p class="card-text">検索機能で月ごとの合計金額を調べることができます。</p>
   </div>
   </div>
-  <div class="card col-4" style="width:20rem;">
+  <div class="card col-5" style="width:20rem;">
   <img class="card-img-top" src="/assets/screenshot1.png" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">カレンダーが使いやすい</h5>
@@ -49,11 +52,28 @@
   </div>
 </div>
 </div>
+<div class="word-wrapper">
+  <h5>mementoの意味は<br>
+  〔過去の体験・出来事などを思い出すために保管しておく小さな〕思い出の品です。</h5>
+</div>
+<div class="word-wrapper">
+<h5>あなたのmementoを作ろう</h5>
+</div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
   <footer>
+  <div class="footer-wrapper memento">
+    <%= link_to"memento", root_path %>
+  </div>
+  <div class="footer-wrapper explanation">
+    <%= link_to"sign in", schedules_path%>
+    <br>
+    <%= link_to "sign up", new_user_registration_path %>
+    <br>
+    <%= link_to"explanation", root_path(anchor: "card-show") %>
+  </div>
     <p>&copy;2020 hiroto</p>
   </footer>
 </body>
