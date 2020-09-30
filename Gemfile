@@ -61,6 +61,8 @@ gem 'devise'
 
 gem 'kaminari'
 
+gem 'bootstrap', '~> 4.5.0'
+
 group :production do
   gem 'pg'
 end

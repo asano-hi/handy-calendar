@@ -16,13 +16,8 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = Schedule.new(schedule_parameter)
-    @schedule.user_id = current_user.id
-    if @schedule.save
-      redirect_to schedules_path
-    else
-      redirect_to new_schedule_path
-    end
+    current_user.schedules.create(schedule_parameter)
+    @schedule = current_user.schedules.all
   end
 
   def destroy
@@ -48,7 +43,7 @@ class SchedulesController < ApplicationController
   private
 
   def schedule_parameter
-    params.require(:schedule).permit(:event_title, :job_title, :memo, :start_time, :end_time, :workhours, :user_id)
+    params.permit(:event_title, :job_title, :memo, :start_time, :end_time, :workhours, :user_id)
   end
 
   
