@@ -18,6 +18,7 @@ class SchedulesController < ApplicationController
   def create
     current_user.schedules.create(schedule_parameter)
     @schedule = current_user.schedules.all
+    render action:new
   end
 
   def destroy
@@ -46,5 +47,5 @@ class SchedulesController < ApplicationController
     params.permit(:event_title, :job_title, :memo, :start_time, :end_time, :workhours, :user_id)
   end
 
-  
+
 end

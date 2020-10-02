@@ -27,7 +27,7 @@
     <% @chart.each do |schedule| %>
       <tr>
         <td><%= schedule.event_title %></td>
-        <td><%= schedule.workhours %></td>
+        <td><%= schedule.workhours*@pay.payment %></td>
         <td><%= schedule.start_time.strftime("%Y-%m-%d") %></td>
       </tr>
     <% end %>
