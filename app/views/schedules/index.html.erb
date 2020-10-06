@@ -1,7 +1,5 @@
 
 <div class="calendar-index">
-
-<p id="notice"><%= notice %></p>
 <br>
 <h1>calendar</h1>
 <br>
@@ -80,8 +78,8 @@
   </thead>
 
   <tbody>
-  <%= page_entries_info @schedules %>
-    <% @schedules.each do |schedule| %>
+  <%= page_entries_info @lists %>
+    <% @lists.each do |schedule| %>
       <tr>
         <td><%= schedule.event_title %></td>
         <td><%= schedule.start_time.strftime("%Y-%m-%d %H:%M") %></td>
@@ -92,7 +90,7 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @schedules %>
+<%= paginate @lists %>
 
 <br>
 

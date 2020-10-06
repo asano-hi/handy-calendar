@@ -3,7 +3,8 @@ class SchedulesController < ApplicationController
   require 'date'
 
   def index
-    @schedules = current_user.schedules.all.order(start_time: "DESC").page(params[:page]).per(5)
+    @schedules = current_user.schedules.all
+    @lists = current_user.schedules.all.order(start_time: "DESC").page(params[:page]).per(5)
 
   end
 
@@ -18,7 +19,7 @@ class SchedulesController < ApplicationController
   def create
     current_user.schedules.create(schedule_parameter)
     @schedule = current_user.schedules.all
-    render action:new
+    render 'create.js.erb'
   end
 
   def destroy

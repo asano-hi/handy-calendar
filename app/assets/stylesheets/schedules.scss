@@ -56,6 +56,15 @@
 
   background-color: white;
 
+  .day a{
+    color: #48c4f5;
+  }
+
+  .day a:hover{
+    color: #48c4f5;
+    text-decoration: none;
+  }
+
   .wday-0 {
     color: red;
   }
@@ -79,9 +88,33 @@
   background-color: #bfc9bd;
 }
 
-.event-show{
+.event-shows{
   width: 100%;
   height: 100vh;
   background-color: #fff7c9;
   text-align: center;
+}
+
+.event-show-title{
+  margin-bottom: 7%;
+}
+
+.event-show{
+  width: 80%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+}
+
+.show-wrapper{
+  border:1px solid #333;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.event-show-bgc{
+  background-color: #fff7c9;
+}
+
+.event-show p{
+  font-size: 1.5rem;
 }
