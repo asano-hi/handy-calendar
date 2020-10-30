@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   require 'date'
 
   def index
-    @schedules = current_user.schedules.where.not(workhours: nil).order(start_time: "ASC").page(params[:page]).per(4)
+    @charts = current_user.schedules.where.not(workhours: nil).order(start_time: "ASC").page(params[:page]).per(4)
     @pay = User.find(current_user.id)
 
     if params[:search_date] == nil
@@ -14,7 +14,7 @@ class JobsController < ApplicationController
     if params[:search_date] == nil
       @chart = current_user.schedules.where(start_time: 2000-01-01)
     else
-      @chart = @schedules.where(start_time: params[:search_date].in_time_zone.all_month)
+      @chart = @charts.where(start_time: params[:search_date].in_time_zone.all_month)
     end
 
   end

@@ -11,7 +11,7 @@
   <br>
   <br>
 <br>
-<%= page_entries_info @schedules %>
+<%= page_entries_info @charts %>
   <div class="payment-show">
   <table class="event-table">
   <thead>
@@ -24,16 +24,16 @@
   </thead>
 
   <tbody>
-    <% @chart.each do |schedule| %>
+    <% @chart.each do |c| %>
       <tr>
-        <td><%= schedule.event_title %></td>
-        <td><%= schedule.workhours*@pay.payment %></td>
-        <td><%= schedule.start_time.strftime("%Y-%m-%d") %></td>
+        <td><%= c.event_title %></td>
+        <td><%= c.workhours*@pay.payment %></td>
+        <td><%= c.start_time.strftime("%Y-%m-%d") %></td>
       </tr>
     <% end %>
   </tbody>
   </table>
-  <div class="page-nunber"><%= paginate @schedules %></div>
+  <div class="page-nunber"><%= paginate @charts %></div>
   </div>
   <br>
   <div class="payment-sum">
