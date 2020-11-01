@@ -19,7 +19,6 @@ class SchedulesController < ApplicationController
   def create
     current_user.schedules.create(schedule_parameter)
     @schedule = current_user.schedules.all
-    render 'create.js.erb'
   end
 
   def destroy

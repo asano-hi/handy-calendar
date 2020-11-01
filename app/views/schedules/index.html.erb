@@ -33,27 +33,27 @@
 <%= form_with(model: @schedule, remote: true) do |form| %>
 
   <div class="title">
-    <%= form.label :event_title %>
+    <%= form.label :タイトル %>
     <%= form.text_field :event_title %>
   </div>
 
   <div class="time">
-    <%= form.label :start_time %>
+    <%= form.label :開始時刻 %>
     <%= form.datetime_select :start_time %>
   </div>
 
   <div class="time">
-    <%= form.label :end_time %>
+    <%= form.label :終了時刻 %>
     <%= form.datetime_select :end_time %>
   </div>
 
   <div class="content">
-    <%= form.label :memo %>
+    <%= form.label :メモ %>
     <%= form.text_field :memo%>
   </div>
 
   <div class="workhour">
-    <%= form.label :workhours%>
+    <%= form.label :仕事時間 %>
     <%= form.number_field :workhours %>
   </div>
 

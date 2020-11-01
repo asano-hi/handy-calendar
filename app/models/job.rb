@@ -1,4 +1,4 @@
 class Job < ApplicationRecord
   belongs_to :user
-  has_many :schedules
+  belongs_to :schedules
 end

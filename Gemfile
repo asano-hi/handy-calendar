@@ -61,6 +61,7 @@ gem 'devise'
 
 gem 'kaminari'
 
+gem 'jquery-rails'
 gem 'bootstrap', '~> 4.5.0'
 
 group :production do
