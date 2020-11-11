@@ -1,7 +1,10 @@
-
 <div class="calendar-index">
 <br>
 <h1>calendar</h1>
+<br>
+
+<%= button_to 'バイト情報を追加する', new_job_path, method: :get %>
+
 <br>
 
 <%= month_calendar events: @schedules do |date, schedules| %>
@@ -16,21 +19,21 @@
 
 <br>
 
-<button type="button" class="btn btn-primary new-btn" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-primary new-btn" data-toggle="modal" data-target="#scheduleModal">
   予定を追加する
 </button>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="scheduleModal" tabindex="-1" role="dialog" aria-labelledby="scheduleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">予定を追加する</h5>
+        <h5 class="modal-title" id="scheduleModalLabel">予定を追加する</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-<%= form_with(model: @schedule, remote: true) do |form| %>
+<%= form_with model: @schedule do |form| %>
 
   <div class="title">
     <%= form.label :タイトル %>
@@ -39,22 +42,17 @@
 
   <div class="time">
     <%= form.label :開始時刻 %>
-    <%= form.datetime_select :start_time %>
+    <%= form.datetime_select :start_time, :use_month_numbers => true, :minute_step => 5 %>
   </div>
 
   <div class="time">
     <%= form.label :終了時刻 %>
-    <%= form.datetime_select :end_time %>
+    <%= form.datetime_select :end_time, :use_month_numbers => true, :minute_step => 5 %>
   </div>
 
   <div class="content">
     <%= form.label :メモ %>
     <%= form.text_field :memo%>
-  </div>
-
-  <div class="workhour">
-    <%= form.label :仕事時間 %>
-    <%= form.number_field :workhours %>
   </div>
 
       </div>
@@ -66,7 +64,61 @@
     </div>
   </div>
 </div>
+<button type="button" class="btn btn-primary new-btn" data-toggle="modal" data-target="#jobModal">
+  バイトの予定を追加する
+</button>
 
+<div class="modal fade" id="jobModal" tabindex="-1" role="dialog" aria-labelledby="jobModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="jobModalLabel">バイトを追加する</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+<%= form_with model: @schedule do |form| %>
+
+  <div class="job-title">
+    <%= form.label :バイト名 %>
+    <%= form.collection_select(:job_s_title, @jobs, :job_title, :job_title, include_blank: true ) %>
+  </div>
+
+  <div class="title">
+    <%= form.label :タイトル %>
+    <%= form.text_field :event_title %>
+  </div>
+
+  <div class="time">
+    <%= form.label :開始時刻 %>
+    <%= form.datetime_select :start_time, :use_month_numbers => true, :minute_step => 5 %>
+  </div>
+
+  <div class="time">
+    <%= form.label :終了時刻 %>
+    <%= form.datetime_select :end_time, :use_month_numbers => true, :minute_step => 5 %>
+  </div>
+
+  <div class="content">
+    <%= form.label :メモ %>
+    <%= form.text_field :memo%>
+  </div>
+
+  <div class="workhour">
+    <%= form.label :仕事時間 %>
+    <%= form.number_field :workhours, :step => 0.1 %>
+  </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= form.submit class:"btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 <br>
 <table class="event-table">
   <thead>
@@ -94,7 +146,7 @@
 
 <br>
 
-<%= button_to '給料情報を見る', jobs_index_path, method: :get %>
+<%= button_to '給料情報を見る', jobs_path, method: :get %>
 <br>
 <%= button_to 'ログアウト', destroy_user_session_path, method: :delete %>
 

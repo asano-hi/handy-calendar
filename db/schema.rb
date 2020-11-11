@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_15_065250) do
+ActiveRecord::Schema.define(version: 2020_11_09_233653) do
 
   create_table "jobs", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.string "job_title"
+    t.integer "payment"
   end
 
   create_table "schedules", force: :cascade do |t|
     t.string "event_title"
-    t.string "job_title"
     t.text "memo"
     t.datetime "start_time"
     t.datetime "end_time"
@@ -27,6 +29,8 @@ ActiveRecord::Schema.define(version: 2020_09_15_065250) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "job_s_title"
+    t.integer "job_id"
   end
 
   create_table "users", force: :cascade do |t|

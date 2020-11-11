@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   root to: 'hello#index'
   get 'hello/link' => 'hello#link'
   resources :schedules
-  get 'jobs/index' => 'jobs#index'
+  resources :jobs
 
 end

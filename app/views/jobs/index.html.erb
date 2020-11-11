@@ -10,6 +10,34 @@
   <% end %>
   <br>
   <br>
+  <div class="row justify-content-center">
+  <div class="col-8">
+    <table class="event-table">
+  <thead>
+    <tr class="">
+      <th>バイト名</th>
+      <th>時給</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jobLists.each do |job| %>
+      <tr>
+        <td><%= job.job_title %></td>
+        <td><%= job.payment %></td>
+        <td><%= button_to 'Show', job, {method: :get, class:"btn"} %></td>
+        <td><%= button_to 'Edit', edit_job_path(job.id), {method: :get, class:"btn"} %></td>
+        <td><%= button_to 'Destroy',job_path(job.id), method: :delete, class:"btn", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+  </div>
+</div>
+
 <br>
 <%= page_entries_info @charts %>
   <div class="payment-show">
@@ -17,6 +45,7 @@
   <thead>
     <tr class="col-xs-8">
       <th>title</th>
+      <th>jobname</th>
       <th>payment</th>
       <th>daytime</th>
       <th colspan="3"></th>
@@ -25,11 +54,14 @@
 
   <tbody>
     <% @chart.each do |c| %>
+    　<% @pay.each do |k| %>
       <tr>
         <td><%= c.event_title %></td>
-        <td><%= c.workhours*@pay.payment %></td>
+        <td><%= c.job_s_title%></td>
+        <td><%= c.workhours*k.payment %></td>
         <td><%= c.start_time.strftime("%Y-%m-%d") %></td>
       </tr>
+     <% end %>
     <% end %>
   </tbody>
   </table>
@@ -38,7 +70,7 @@
   <br>
   <div class="payment-sum">
   <h5>給料合計</h5>
-  <%= @monthPay*@pay.payment %>
+  <%= @monthPay %>
   </div>
   <br>
   <div class="chart-show">

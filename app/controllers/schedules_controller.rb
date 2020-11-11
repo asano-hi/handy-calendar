@@ -5,7 +5,7 @@ class SchedulesController < ApplicationController
   def index
     @schedules = current_user.schedules.all
     @lists = current_user.schedules.all.order(start_time: "DESC").page(params[:page]).per(5)
-
+    @jobs = current_user.jobs.all
   end
 
   def new
@@ -44,7 +44,7 @@ class SchedulesController < ApplicationController
   private
 
   def schedule_parameter
-    params.permit(:event_title, :job_title, :memo, :start_time, :end_time, :workhours, :user_id)
+    params.permit(:event_title, :job_s_title, :memo, :start_time, :end_time, :workhours, :user_id)
   end
 
 

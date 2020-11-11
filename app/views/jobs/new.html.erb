@@ -1,0 +1,22 @@
+<div class="event-form">
+<%= form_with(model: @job, local: true) do |form| %>
+
+  <div class="title">
+    <%= form.label :バイト名 %>
+    <%= form.text_field :job_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :時給（バイト先） %>
+    <%= form.number_field :payment %>
+  </div>
+
+
+  <div class="submit">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+<%= button_to 'Back', schedules_path , method: :get%>
+</div>
