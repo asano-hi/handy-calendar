@@ -39,8 +39,8 @@ class JobsController < ApplicationController
   end
 
   def create
-    job = current_user.jobs.new(job_parameter)
-    if job.save
+    @job = current_user.jobs.new(job_parameter)
+    if @job.save
       redirect_to schedules_path
     else
       redirect_to new_job_path
