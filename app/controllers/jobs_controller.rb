@@ -5,18 +5,27 @@ class JobsController < ApplicationController
     @charts = current_user.schedules.where.not(workhours: nil).order(start_time: "ASC").page(params[:page]).per(4)
     @jobLists = current_user.jobs.all
     @workhours = current_user.schedules.where.not(workhours: nil).select(:start_time, :job_s_title, :workhours)
-    @pay = current_user.jobs.joins(:schedules).select(:payment)
+
+
+    if params[:search_job] == nil
+      @workSearch = current_user.schedules.where(start_time: 20000101)
+      @jobSearch = Job.find_by(job_title: "居酒屋")
+    else
+      @workSearch = current_user.schedules.where(job_s_title: params[:search_job])
+      @jobSearch = current_user.jobs.find_by(job_title: params[:search_job])
+
+    end
 
     if params[:search_date] == nil
       @monthPay = 0
     else
-      @monthPay = current_user.schedules.where(start_time: params[:search_date].in_time_zone.all_month).sum(:workhours)
+      @monthPay = current_user.schedules.where(job_s_title: params[:search_job]).where(start_time: params[:search_date].in_time_zone.all_month).sum(:workhours)
     end
 
     if params[:search_date] == nil
       @chart = current_user.schedules.where(start_time: 20000101)
     else
-      @chart = @charts.where(start_time: params[:search_date].in_time_zone.all_month)
+      @chart = @charts.where(job_s_title: params[:search_job]).where(start_time: params[:search_date].in_time_zone.all_month)
     end
 
   end
