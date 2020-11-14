@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_11_09_233653) do
 
+  
   create_table "jobs", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

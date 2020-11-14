@@ -19,6 +19,7 @@ class SchedulesController < ApplicationController
   def create
     current_user.schedules.create(schedule_parameter)
     @schedule = current_user.schedules.all
+    redirect_to schedules_path
   end
 
   def destroy
@@ -34,7 +35,7 @@ class SchedulesController < ApplicationController
   def update
     @schedule = Schedule.find(params[:id])
     if @schedule.update(schedule_parameter)
-      redirect_to schedules_path, notice:"編集しました"
+      redirect_to schedules_path
     else
       render 'edit'
     end
@@ -44,7 +45,7 @@ class SchedulesController < ApplicationController
   private
 
   def schedule_parameter
-    params.permit(:event_title, :job_s_title, :memo, :start_time, :end_time, :workhours, :user_id)
+    params.require(:schedule).permit(:event_title, :job_s_title, :memo, :start_time, :end_time, :workhours, :user_id)
   end
 
 
