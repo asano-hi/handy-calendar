@@ -17,7 +17,7 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    current_user.schedules.create(schedule_parameter)
+    current_user.schedules.create(schedules_parameter)
     @schedule = current_user.schedules.all
     redirect_to schedules_path
   end
@@ -46,6 +46,10 @@ class SchedulesController < ApplicationController
 
   def schedule_parameter
     params.require(:schedule).permit(:event_title, :job_s_title, :memo, :start_time, :end_time, :workhours, :user_id)
+  end
+
+  def schedules_parameter
+    params.permit(:event_title, :job_s_title, :memo, :start_time, :end_time, :workhours, :user_id)
   end
 
 
