@@ -9,7 +9,7 @@ class JobsController < ApplicationController
 
     if params[:search_job] == nil
       @workSearch = current_user.schedules.where(start_time: 20000101)
-      @jobSearch = Job.find_by(job_title: "居酒屋")
+      @jobSearch = Job.find_by(job_title: "abc123")
     else
       @workSearch = current_user.schedules.where(job_s_title: params[:search_job])
       @jobSearch = current_user.jobs.find_by(job_title: params[:search_job])
